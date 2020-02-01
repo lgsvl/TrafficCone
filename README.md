@@ -6,7 +6,7 @@ To use this Controllable Plugin:
 
 1) Clone the repo into Assets/External/Controllables/TrafficCone inside of your Simulator Unity Project
 
-2) Build the Controllable Plugin for use with the Simulator, navigate to the `Simulator -> Build Controllables` Unity Editor menu item. Select TrafficCone controllable and build.  Output bundle will be in AssetBundles/Controllables folder in root of Simulator Unity Project
+2) Build the Controllable Plugin for use with the Simulator, navigate to the `Simulator -> Build...` Unity Editor menu item. Select TrafficCone controllable and build.  Output bundle will be in AssetBundles/Controllables folder in root of Simulator Unity Project
 
 3) Simulator will load, at runtime, all custom Controllable Plugin bundles in AssetBundles/Controllables directory
 
