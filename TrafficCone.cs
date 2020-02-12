@@ -14,11 +14,11 @@ namespace Simulator.Controllable
     {
         public bool Spawned { get; set; }
         public string UID { get; set; }
-        public string ControlType { get; set; }
+        public string ControlType { get; set; } = "cone";
         public string CurrentState { get; set; }
-        public string[] ValidStates { get; }
-        public string[] ValidActions { get; }
-        public string DefaultControlPolicy { get; set; }
+        public string[] ValidStates { get; set; } = new string[] { };
+        public string[] ValidActions { get; set; } = new string[] { };
+        public string DefaultControlPolicy { get; set; } = "";
         public string CurrentControlPolicy { get; set; }
         
         private void Awake()
