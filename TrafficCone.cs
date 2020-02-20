@@ -20,7 +20,9 @@ namespace Simulator.Controllable
         public string[] ValidActions { get; set; } = new string[] { };
         public string DefaultControlPolicy { get; set; } = "";
         public string CurrentControlPolicy { get; set; }
-        
+
+        public string GUID => UID;
+
         private void Awake()
         {
             CurrentControlPolicy = DefaultControlPolicy;
