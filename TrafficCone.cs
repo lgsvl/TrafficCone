@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 LG Electronics, Inc.
+ * Copyright (c) 2020-2021 LG Electronics, Inc.
  *
  * This software contains code licensed as described in LICENSE.
  *
@@ -14,19 +14,23 @@ namespace Simulator.Controllable
     {
         public bool Spawned { get; set; }
         public string UID { get; set; }
+        public string GUID => UID;
         public string ControlType { get; set; } = "cone";
         public string CurrentState { get; set; }
         public string[] ValidStates { get; set; } = new string[] { };
         public string[] ValidActions { get; set; } = new string[] { };
-        public string DefaultControlPolicy { get; set; } = "";
-        public string CurrentControlPolicy { get; set; }
+        public List<ControlAction> DefaultControlPolicy { get; set; } =
+            new List<ControlAction>
+            {
+                new ControlAction { Action = "state", Value = "" }
+            };
 
-        public string GUID => UID;
+        public List<ControlAction> CurrentControlPolicy { get; set; }
 
         private void Awake()
         {
             CurrentControlPolicy = DefaultControlPolicy;
-            CurrentState = "";
+            Control(CurrentControlPolicy);
         }
 
         protected void OnDestroy()
@@ -36,15 +40,15 @@ namespace Simulator.Controllable
 
         public void Control(List<ControlAction> controlActions)
         {
-            for (int i = 0; i < controlActions.Count; i++)
+            foreach (var action in controlActions)
             {
-                var action = controlActions[i].Action;
-                var value = controlActions[i].Value;
-
-                switch (action)
+                switch (action.Action)
                 {
+                    case "state":
+                        CurrentState = action.Value;
+                        break;
                     default:
-                        Debug.LogError($"'{action}' is an invalid action for '{ControlType}'");
+                        Debug.LogError($"'{action.Action}' is an invalid action for '{ControlType}'");
                         break;
                 }
             }
