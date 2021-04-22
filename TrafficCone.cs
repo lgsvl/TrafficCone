@@ -48,7 +48,7 @@ namespace Simulator.Controllable
                         CurrentState = action.Value;
                         break;
                     default:
-                        Debug.LogError($"'{action.Action}' is an invalid action for '{ControlType}'");
+                        Debug.LogWarning($"'{action.Action}' is an invalid action for '{ControlType}'");
                         break;
                 }
             }
